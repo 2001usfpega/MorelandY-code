@@ -14,7 +14,7 @@ public class Employee {
 	
 	public static void mainEmp(){
 		try{
-			FileInputStream file=new FileInputStream("Data.txt");
+			FileInputStream file=new FileInputStream("Bank.txt");
 			ObjectInputStream in = new ObjectInputStream(file);
 			ba=(ArrayList<EmpAdm>)in.readObject();
 			in.close();
