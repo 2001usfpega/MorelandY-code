@@ -19,7 +19,7 @@ public class Admin extends EmpAdm {
 	public static void mainAdm(){
 
 
-		setDefault(false);
+	//	setDefault(true);
 
 
 
