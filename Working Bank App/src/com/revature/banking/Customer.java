@@ -4,7 +4,7 @@ package com.revature.banking;
 
 import java.util.Scanner;
 
-public class Customer extends Menu {
+public class Customer{
 
 	public static void main(String[] args) {
 		Employee e = new Employee();

@@ -70,7 +70,7 @@ public class EmpAdm implements Serializable {
 			
 			// Saving of object in a file
 			
-			file = new FileOutputStream("Data.txt");
+			file = new FileOutputStream("Bank.txt");
 			//Users//Yzairyen//Documents//workspace-spring-tool-suite-4-4.5.0.RELEASE//Working Bank App//src//com//revature//banking//Data.txt"
 			out = new ObjectOutputStream(file);
 			// (/Users/Yzairyen/Documents/workspace-spring-tool-suite-4-4.5.0.RELEASE/BankingApp/src/com/revature/Bank.txt);
@@ -90,7 +90,7 @@ public class EmpAdm implements Serializable {
 	
 	public static void loadAll() {
 		try{
-			FileInputStream file = new FileInputStream("Data.txt");
+			FileInputStream file = new FileInputStream("Bank.txt");
 					
 			ObjectInputStream in = new ObjectInputStream(file);
 			ba=(ArrayList<EmpAdm>)in.readObject();
@@ -128,7 +128,7 @@ public class EmpAdm implements Serializable {
 	public static void writeOutputStreamContents(String contents) {
 		ObjectOutputStream objectOut;
 		try {
-			objectOut = new ObjectOutputStream(new FileOutputStream("Data.txt"));// highlights file not found so do try
+			objectOut = new ObjectOutputStream(new FileOutputStream("Bank.txt"));// highlights file not found so do try
 																					// catch block
 			objectOut.writeObject(ba);// pass in person file
 			objectOut.close();
