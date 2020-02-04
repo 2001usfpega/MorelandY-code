@@ -2,7 +2,6 @@ package com.revature.banking;
 
 
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -11,6 +10,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+
 
 public class Admin extends EmpAdm {
 
@@ -75,6 +76,10 @@ public class Admin extends EmpAdm {
 		case 1:	
 			System.out.println("Here is the account information for your most recent customers: ");	
 
+			AdminImpl ai = new AdminImpl();
+			System.out.println(ai.selectAllCustomer());
+			
+			
 
 			//System.out.println(ba.size());
 			//			
@@ -92,9 +97,9 @@ public class Admin extends EmpAdm {
 			//			}catch (FileNotFoundException e) {
 			//				e.printStackTrace();
 			//System.out.println(ba.size());
-			for (EmpAdm eachAcct : ba) {
-				System.out.println(eachAcct);
-			}
+//			for (EmpAdm eachAcct : ba) {
+//				System.out.println(eachAcct);
+//			}
 			//			ArrayList<EmpAdm> ba = new ArrayList<EmpAdm>();
 			//			 for (EmpAdm unsort: ba) {
 			//				 System.out.println(ba);

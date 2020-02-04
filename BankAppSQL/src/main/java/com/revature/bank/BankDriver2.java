@@ -1,29 +1,35 @@
-package com.revature.banking;
+package com.revature.bank;
 
 
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import com.revature.bankcustomer.Customer;
+import com.revature.bankdao.AdminImpl;
+import com.revature.bankdao.CustomerImpl;
 
+public class BankDriver2{
+	
+	private static String url = System.getenv("url");
+	private static String username = System.getenv("username");
+	private static String password = System.getenv("password");
 
-
-
-public class Customer{
-	
-	
-	
-	
-
-	
 	public static void main(String[] args) {
-		Employee e = new Employee();
-		Admin a = new Admin();
-		
-		
+//		Employee e = new Employee();
+//		Admin a = new Admin();
 
 		Scanner c = new Scanner(System.in);
 		String content;
 
+		CustomerImpl ci = new CustomerImpl();
+		
 		System.out.println("Welcome to Java Bank!");
 		System.out.println("Are you a new or returning customer?");
 
@@ -44,7 +50,8 @@ public class Customer{
 				content = c.next();
 				System.out.println("Phone Number: ");
 				content = c.next();
-
+				AdminImpl ai = new AdminImpl();
+				System.out.println(ai.selectAllCustomer());
 				System.out.println(
 						"Thank you for applying! At this time we are reviewing your application. A branch administrator will contact you shortly.");
 			} else if (content.equals("2.")) {
@@ -91,27 +98,27 @@ public class Customer{
 			Scanner nsc = new Scanner(System.in);
 			contents = nsc.next();
 
-			Account save = new Account();
-			save.balance = 10000;
+			//Account save = new Account();
+		//	save.balance = 10000;
 
-			Account check = new Account();
-			check.balance = 2000;
+		//	Account check = new Account();
+		//	check.balance = 2000;
 
 			switch (contents) {
 			// balance
 			case "1.":
-				Account custo1 = new Account();
+			//	Account custo1 = new Account();
 				System.out.println("Which account balance would you like?");
 				System.out.println("1. Checking");
 				System.out.println("2. Savings");
 
 				contents = nsc.next();
 
-				if (contents.equals("1.")) {
-					System.out.println("Your available Checking Account balance is: " + "$" + check.getBalance());
-				} else {
-					System.out.println("Your available Savings Account balance is: " + "$" + save.getBalance());
-				}
+			//	if (contents.equals("1.")) {
+			//		System.out.println("Your available Checking Account balance is: " + "$" + check.getBalance());
+			//	} else {
+			//		System.out.println("Your available Savings Account balance is: " + "$" + save.getBalance());
+			//	}
 
 				contents = sc.next();
 				break;
@@ -158,17 +165,69 @@ public class Customer{
 				break;
 			case "4.":
 				System.out.println("");
+				///////////////////////////////////////////
+				Customer custos = new Customer();
+			String customer_username = " ";
+				try (Connection conn = DriverManager.getConnection(url, username, password)) {
+					String sql = "SELECT * FROM customer where customer_username =?";
+					
+					PreparedStatement ps = conn.prepareStatement(sql);
+					ps.setString(1, customer_username);
+
+					ResultSet rs = ps.executeQuery();
+					rs.next();
+
+					custos.setCustomer_id(rs.getInt(1));
+					custos.setCustomer_firstname(rs.getString(2));
+					custos.setCustomer_lastname(rs.getString(3));
+					custos.setCustomer_username(rs.getString(4));
+					custos.setCustomer_password(rs.getString(5));
+					custos.setCustomer_accountnumber(rs.getInt(6));
+					custos.setChecking_balance(rs.getInt(7));
+					custos.setSaving_balance(rs.getInt(8));
 				
-				System.out.println("Username: ");
-				System.out.println("Password: ");
-				System.out.println("Account ID: ");
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+					
+				}
+			
+				System.out.println(custos);
+				
+				
+			
+				//////////////////////////////////////////
+				//System.out.println(ci.selectAllCustomer());
+//				System.out.println("Username: ");
+//				System.out.println("Password: ");
+//				System.out.println("Account ID: ");
 				break;
 			}
 
-		} else if (content.equals("3.")) {
-			Employee.mainEmp();
+		//} else if (content.equals("3.")) {
+			//Employee.mainEmp();
 		} else if (content.equals("4.")) {
 			Admin.mainAdm();
 		}
 	}
+	
+//	String customer_username = "Ymore";
+//	String customer_password = "Hi";
+//	String customer_firstname = "Wendy";
+//	String customer_lastname = "Moreland";
+//	int customer_id = 82792;
+//	int checking_balance = 0;
+//	int saving_balance = 0;
+//	int customer_accountnumber = 12;
+//	
+//AdminImpl ai = new AdminImpl();
+//	
+//	ai.addCusto(customer_id, customer_firstname, customer_lastname, customer_username,
+//			customer_password, customer_accountnumber, checking_balance, saving_balance);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//	System.out.println(ai.selectAllCustomer());
+	
+	
+	
 }
