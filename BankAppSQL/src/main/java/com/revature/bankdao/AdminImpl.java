@@ -20,24 +20,23 @@ public class AdminImpl implements AdminDao {
 	private static String password = System.getenv("password");
 
 	@Override
-	public void addCusto(int customer_id, String customer_firstname, String customer_lastname, String customer_username,
-			String customer_password, int customer_accountnumber, int checking_balance, int saving_balance) {
+	public void addCusto(String customer_firstname, String customer_lastname, String customer_username,
+			String customer_password, int checking_balance, int saving_balance) {
 		
-		System.out.println("any thing in " + url);
+		
 		
 		try (Connection conn = DriverManager.getConnection(url, username, password)) {
-			String sql = "INSERT INTO customer(customer_id, customer_firstname, customer_lastname, customer_username, customer_password, customer_accountnumber, checking_balance, saving_balance) VALUES(?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO customer(customer_firstname, customer_lastname, customer_username, customer_password, checking_balance, saving_balance) VALUES(?,?,?,?,?,?)";
 
-			//insert into customer values (002, 'Magnolia', 'McGruder', 'Mac', 'McNasty', 120134, '', '');
+			
 			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setInt(1, customer_id);
-			ps.setString(2, customer_firstname);
-			ps.setString(3, customer_lastname);
-			ps.setString(4, customer_username);
-			ps.setString(5, customer_password);
-			ps.setInt(6, customer_accountnumber);
-			ps.setInt(7, checking_balance);
-			ps.setInt(8, saving_balance);
+			;
+			ps.setString(1, customer_firstname);
+			ps.setString(2, customer_lastname);
+			ps.setString(3, customer_username);
+			ps.setString(4, customer_password);
+			ps.setInt(5, checking_balance);
+			ps.setInt(6, saving_balance);
 
 
 			ps.executeUpdate();
@@ -129,5 +128,7 @@ public class AdminImpl implements AdminDao {
 			e.printStackTrace();
 		}		return null;
 	}
+
+	
 
 }

@@ -47,8 +47,8 @@ public class Admin extends EmpAdm {
 
 			break;
 		case 2: // create
-			System.out.println("Account ID: ");
-			int customer_id = sc.nextInt();
+			//System.out.println("Account ID: ");
+			//int customer_id = sc.nextInt();
 			System.out.println("First Name: ");
 			String customer_firstname = sc.next();
 			System.out.println("Last Name: ");
@@ -57,27 +57,20 @@ public class Admin extends EmpAdm {
 			String customer_username = sc.next();
 			System.out.println("Password: ");
 			String customer_password = sc.next();
-			System.out.println("Account Number: ");
-			int customer_accountnumber = sc.nextInt();
+			//System.out.println("Account Number: ");
+			//int customer_accountnumber = sc.nextInt();
 			System.out.println("Checking Account Balance: ");
 			int checking_balance = sc.nextInt();
 			System.out.println("Saving Account Balance: ");
 			int saving_balance = sc.nextInt();
-			ai.addCusto(customer_id, customer_firstname, customer_lastname, customer_username, customer_password,
-					customer_accountnumber, checking_balance, saving_balance);
+			System.out.println("New User Account Created");
+		
+			ai.addCusto(customer_firstname, customer_lastname, customer_username, customer_password,
+					checking_balance, saving_balance);
 			break;
-//			int num1 = sc.nextInt();
-//			switch(num1) {
-//			case 1:
-//				System.out.println("This request has been approved.");
-//				break;
-//			case 2: 
-//				System.out.println("This account has been denied.");
-//				break;
-//			default:
-//				System.out.println("Return to menu.");
-//			}
-//			break;
+			//System.out.println("New User Account Created");
+		//	break;
+
 		case 3: // update
 			System.out.println("Would you like to edit this account?");
 
@@ -141,40 +134,13 @@ public class Admin extends EmpAdm {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+				System.out.println("You will now be logged out. Log back in to update another account.");
 				break;
-			case "2.":
-
-				System.out.println("");
-				System.out.println("How much would you like to transfer?");
-				contents = nsc.next();
-				String h = contents;
-				System.out.println("");
-				System.out.println("How would you like to transfer?");
-
-				System.out.println("1. Checking Account to Saving Account");
-				System.out.println("2. Savings Account to Checking Account");
-				System.out.println(" ");
-				contents = nsc.next();
-
-				if (contents.equals("1.")) {
-					System.out.println("Your new Checking Account balance is: " + "$" + (2000 - Integer.parseInt(h)));
-					System.out.println("Your new Savings Account balance is: " + "$" + (2000 + Integer.parseInt(h)));
-				} else if (contents.equals("2.")) {
-					System.out.println("Your new Savings Account balance is: " + "$" + (2000 - Integer.parseInt(h)));
-					System.out.println("Your new Checking Account balance is: " + "$" + (2000 + Integer.parseInt(h)));
-				} else {
-					System.out.println("Invalid Selection");
-				}
-				contents = nsc.next();
-				break;
-
+				
 			}
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
+		case 4: 
 
-		case 4: // delete
-//			String = sc.next();
 			System.out.println("Which account would you like to cancel?");
 
 			System.out.println("");
@@ -184,32 +150,14 @@ public class Admin extends EmpAdm {
 			customer_lastname = sc.next();
 			ai.deleteCusto(customer_firstname, customer_lastname);
 
-//			try (Connection conn = DriverManager.getConnection(url, username, password)) {
-//
-//				String sql = "DELETE customer where firstname= ? and lastname = ?";
-//				PreparedStatement ps = conn.prepareStatement(sql);
-//				ps.setString(1, customer_firstname);
-//				ps.setString(2, customer_lastname);
-//
-//				ps.executeUpdate();
-//				ResultSet rs = ps.executeQuery();
-//
-//			} catch (SQLException e) {
-//				e.printStackTrace();
-//			}
-
 			System.out.println("Customer account has been deleted.");
 			
 			break;
 
-//				System.out.println("This account has been removed.");
-//			default:
-//				System.out.println("Return to menu.");	
-//			break;
-		}
+		
 
 	}
-
+	}
 	public static void setDefault(boolean setDefault) {
 		if (setDefault) {
 			ba.add(new EmpAdm("Llangford", "Encapsulation", "Lauren Lanford", 1));

@@ -11,17 +11,18 @@ public interface CustomerDao {
 		//Read
 		public Customer selectAllCustomer();
 		//view
-		public Customer selectCustomerByName(String customer_firstname, String customer_lastname);
+		public Customer selectCustomerByUsername(String customer_username);
 		//Update
 		public Customer updateCustomer(int checking_balance, int saving_balance, String customer_firstname);
 		
-		
+		public Customer addCusto(String customer_firstname, String customer_lastname, String customer_username,
+			String customer_password, int checking_balance, int saving_balance);
 
-		
+		public Customer deleteCustomer(String customer_username);
 		
 		
 		//create
-		public void addCusto(int customer_id, String customer_firstname, String customer_lastname, String customer_username, String customer_password, int customer_accountnumber);
+		public void addCusto( String customer_firstname, String customer_lastname, String customer_username, String customer_password);
 		//view
 		public int getCustoById(int customer_id);
 		//Update

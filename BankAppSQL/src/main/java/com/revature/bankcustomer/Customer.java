@@ -7,13 +7,13 @@ public class Customer {
 		
 	}
 	private int customer_id;
-	private String customer_firstname;
+	public String customer_firstname;
 	private String customer_lastname;
 	private String customer_username;
 	private String customer_password; 
 	private int customer_accountnumber;
-	private int checking_balance;
-	private int saving_balance;
+	public int checking_balance;
+	public int saving_balance;
 	public Customer(int customer_id, String customer_firstname, String customer_lastname, String customer_username,
 			String customer_password, int customer_accountnumber, int checking_balance, int saving_balance) {
 		super();
@@ -76,10 +76,10 @@ public class Customer {
 	}
 	@Override
 	public String toString() {
-		return "Customer [customer_id=" + customer_id + ", customer_firstname=" + customer_firstname
-				+ ", customer_lastname=" + customer_lastname + ", customer_username=" + customer_username
-				+ ", customer_password=" + customer_password + ", customer_accountnumber=" + customer_accountnumber
-				+ ", checking_balance=" + checking_balance + ", saving_balance=" + saving_balance + "]";
+		return "Customer ID =" + customer_id + "\nFirst Name = " + customer_firstname
+				+ "\nLast Name = " + customer_lastname + "\nUsername = " + customer_username
+				+ "\nPassword = " + customer_password + "\nAccount Number = " + customer_accountnumber
+				+ "\nChecking Account Balance = " + checking_balance + "\nSavings Account Balance = " + saving_balance + "";
 	}
 	
 	
