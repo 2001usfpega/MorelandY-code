@@ -10,6 +10,7 @@ import com.revature.bankcustomer.Customer;
 
 public class CustomerImpl implements CustomerDao {
 
+	
 	private static String url = System.getenv("url");
 	private static String username = System.getenv("username");
 	private static String password = System.getenv("password");

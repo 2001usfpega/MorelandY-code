@@ -157,16 +157,20 @@ public class BankDriver {
 
 						System.out.println("");
 						System.out.println("Would you like to make another withdrawal?");
+					
 						System.out.println("1. Yes");
 						System.out.println("2. No");
 						contents = nsc.next();
 
-						if (contents != "1.") {
+						if (contents.equals("2.")) {
 							yesyesyes = false;
 							System.out.println(
 									"Thank you! You will now be logged out. Please log back in for more transactions.");
 							break;
 
+						}
+						else {
+							yesyesyes = true;
 						}
 
 					} while (yesyesyes);
@@ -223,12 +227,14 @@ public class BankDriver {
 						System.out.println("2. No");
 						contents = nsc.next();
 
-						if (contents != "1.") {
+						if (contents.equals("2.")) {
 							yesyesyes = false;
 							System.out.println(
 									"Thank you! You will now be logged out. Please log back in for more transactions.");
 							break;
 
+						}else {
+							yesyesyes = true;
 						}
 
 					} while (yesyesyes);
