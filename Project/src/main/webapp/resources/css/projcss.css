@@ -1,0 +1,30 @@
+@charset "ISO-8859-1";
+
+
+container{
+	padding-top: 200px !important;
+
+}
+	
+
+#our_div {
+	padding-top: 200px;
+}
+
+
+
+
+.bg{
+	background: url("../image/chuttersnap-C4Lrq1F3vDQ-unsplash.jpg")no-repeat;
+	background-size: 100% 100%;
+	width: 100%;
+	height: 100vh;
+	
+}
+
+.card-body{
+	background-color: #343a40;
+	color: white;
+	
+}
+
